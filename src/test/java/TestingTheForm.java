@@ -3,6 +3,7 @@ import org.junit.jupiter.api.*;
 
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
 public class TestingTheForm {
@@ -20,8 +21,9 @@ public class TestingTheForm {
         form.$("[data-test-id=agreement]").click();
         form.$("button").click();
         String expected = "Ваша заявка успешно отправлена! Наш менеджер свяжется с вами в ближайшее время.";
+        String actual = "[data-test-id = order-success]";
 
-        $("[data-test-id = order-success]").shouldHave(exactText(expected));
+        assertEquals(expected, actual);
     }
 
 }
